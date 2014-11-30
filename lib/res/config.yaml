@@ -1,0 +1,46 @@
+#+-----------------------------------------+
+#| config.yaml
+#+-----------------------------------------+
+#| Copyright DarkOverlordOfData (c) 2014
+#+-----------------------------------------+
+#|
+#| This file is a part of alienzone
+#|
+#| alienzone is free software; you can copy, modify, and distribute
+#| it under the terms of the MIT License
+#|
+#+-----------------------------------------+
+#
+# Backgammon Dilithium(Li2) Configuration
+#
+#
+name: Backgammon
+locale: false
+menu: main
+
+minWidth: 320
+minHeight: 480
+maxWidth: 640
+maxHeight: 960
+pageAlignHorizontally: true
+pageAlignVertically: true
+forceOrientation: false
+
+splashKey: splash
+splashImg: images/splash.png
+
+showPreloadBar: true
+preloadBarKey: loading
+preloadBarImg: images/loading.png
+preloadBgdKey: logo
+preloadBgdImg: images/d16a.png
+
+sections:
+  strings: values/strings.yaml
+  arrays: values/arrays.yaml
+  preferences: preferences/preferences.yaml
+  levels: values/levels.yaml
+  audio: values/audio.yaml
+  sprites: values/sprites.yaml
+  images: values/images.yaml
+
