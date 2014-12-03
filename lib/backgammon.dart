@@ -44,7 +44,7 @@ import "package:dilithium/dilithium.dart";
 
 part 'src/backgammon_application.dart';
 part 'src/game.dart';
-
+part 'src/classes/match.dart';
 
 /**
  * Artemis:
@@ -76,10 +76,10 @@ part 'src/components/velocity.dart';
  * Entities
  */
 part 'src/entities/button_entity.dart';
-part 'src/entities/gem_entity.dart';
 part 'src/entities/image_entity.dart';
 part 'src/entities/input_entity.dart';
 part 'src/entities/legend_entity.dart';
+part 'src/entities/pip_entity.dart';
 part 'src/entities/player_entity.dart';
 part 'src/entities/score_entity.dart';
 part 'src/entities/string_entity.dart';
@@ -89,7 +89,7 @@ part 'src/entities/string_entity.dart';
 part 'src/systems/arcade_physics_system.dart';
 part 'src/systems/button_render_system.dart';
 part 'src/systems/legend_render_system.dart';
-part 'src/systems/gems_render_system.dart';
+part 'src/systems/pips_render_system.dart';
 part 'src/systems/player_control_system.dart';
 part 'src/systems/score_render_system.dart';
 part 'src/systems/sprite_render_system.dart';

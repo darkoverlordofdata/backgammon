@@ -18,10 +18,10 @@ name: Backgammon
 locale: false
 menu: main
 
-minWidth: 320
-minHeight: 480
-maxWidth: 640
-maxHeight: 960
+minWidth: 840
+minHeight: 600
+maxWidth: 840
+maxHeight: 600
 pageAlignHorizontally: true
 pageAlignVertically: true
 forceOrientation: false

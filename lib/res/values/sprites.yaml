@@ -1,15 +1,24 @@
-dude:
-  file: assets/dude.png
-  width: 32
-  height: 48
+pips:
+  file: images/checkers.png
+  width: 50
+  height: 50
 
-gems:
-  file      : images/gems.png
-  width     : 48
-  height    : 48
+pips_active:
+  file: images/checkers_active.png
+  width: 50
+  height: 50
 
-legend:
-  file      : images/legend.png
-  width     : 24
-  height    : 24
+pips_topdown:
+  file: images/checkers_topdown.png
+  width: 50
+  height: 50
 
+dice:
+  file: images/dice.png
+  width: 64
+  height: 64
+
+buttons:
+  file: images/buttons.png
+  width: 101
+  height: 111

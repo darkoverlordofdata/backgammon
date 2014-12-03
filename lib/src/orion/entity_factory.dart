@@ -19,8 +19,8 @@ class EntityFactory  {
   ButtonEntity button(int x, int y, String key, String state)
     => new ButtonEntity(this, x, y, key, state);
 
-  GemEntity gem(int x, int y, String key, int range)
-    => new GemEntity(this, x, y, key, range);
+  PipEntity pip(int color, int point, String key)
+    => new PipEntity(this, color, point, key);
 
   ImageEntity image(int x, int y, String key, [double opacity=1])
     => new ImageEntity(this, x, y, key, opacity);
@@ -47,7 +47,7 @@ class EntityFactory  {
   AbstractEntity invoke(String methodName, List args) {
     switch(methodName) {
       case 'button':      return Function.apply(button, args);
-      case 'gem':        return Function.apply(gem, args);
+      case 'pip':        return Function.apply(pip, args);
       case 'image':       return Function.apply(image, args);
       case 'input':       return Function.apply(input, args);
       case 'legend':      return Function.apply(legend, args);

@@ -2,10 +2,5 @@
 
 
 board:            images/board.png
-buttons:          images/buttons.png
 button_small:     images/button_small.png
-checkers:         images/checkers.png
-checkers_active:  images/checkers_active.png
-checkers_topdown: images/checkers_topdown.png
-dice:             images/dice.png
 

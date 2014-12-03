@@ -32,7 +32,7 @@ class Game extends Dilithium {
       "yellow"
   ];
 
-  AlienZoneApplication app;
+  BackgammonApplication app;
   Li2Template template;
 
   num soundfx = VOLUME_OFF;
