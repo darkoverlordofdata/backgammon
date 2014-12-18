@@ -32,7 +32,7 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
       s.alpha = 0;
       die[player.value].add(s);
 
-      s = level.add.sprite(sprite.x, sprite.y, sprite.key, player.value * 7 + level.random.nextInt(6)+1));
+      s = level.add.sprite(sprite.x, sprite.y, sprite.key, player.value * 7 + level.random.nextInt(6)+1);
       s.alpha = 0;
       pip[player.value].add(s);
 

@@ -32,6 +32,7 @@ library backgammon;
 
 
 
+import 'dart:async';
 import 'dart:html';
 import 'dart:js';
 import 'dart:async' as async;
@@ -42,9 +43,14 @@ import 'package:play_phaser/phaser.dart' as Phaser;
 import 'package:play_phaser/arcade.dart' as Arcade;
 import "package:dilithium/dilithium.dart";
 import "package:mt19937/mt19937.dart";
+import 'package:googleapis_auth/auth_browser.dart' as auth;
+import 'package:googleapis/plus/v1.dart' as plus;
+import 'package:googleapis/games/v1.dart' as games;
+
 
 part 'src/backgammon_application.dart';
 part 'src/game.dart';
+part 'src/game_login.dart';
 part 'src/classes/match.dart';
 
 /**

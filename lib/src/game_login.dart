@@ -1,15 +1,4 @@
-import 'dart:async';
-import 'dart:html';
-
-import 'package:googleapis_auth/auth_browser.dart' as auth;
-import 'package:googleapis/plus/v1.dart' as plus;
-import 'package:googleapis/games/v1.dart' as games;
-
-
-main() {
-  GameLogin g = new GameLogin();
-  g.connect();
-}
+part of backgammon;
 
 class GameLogin {
 
@@ -27,6 +16,8 @@ class GameLogin {
     loginButton = querySelector('#login_button');
     loginDiv = querySelector('#loginDiv');
     welcomeDiv = querySelector('#welcomeDiv');
+    connect();
+    new BackgammonApplication();
 
   }
 

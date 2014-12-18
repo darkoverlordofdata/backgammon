@@ -27,8 +27,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Backgammon.  If not, see <http://www.gnu.org/licenses/>.
 */
-import "package:backgammon/backgammon.dart" show BackgammonApplication;
+import "package:backgammon/backgammon.dart" show BackgammonApplication, GameLogin;
+
+
 
 void main() {
-  new BackgammonApplication();
+  new GameLogin();
 }
