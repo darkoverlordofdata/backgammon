@@ -68,26 +68,4 @@ class Game extends Dilithium {
     return new BaseLevel('main', config);
 
   }
-
-
-  /**
-   * Set game preferences
-   */
-  setPreference(id, value) {
-
-    switch(id) {
-      case 'fullscreen':
-        fullscreen = value;
-        break;
-
-      case 'soundfx':
-        soundfx = value ? VOLUME_ON : VOLUME_OFF;
-        break;
-
-      case 'playmusic':
-        playmusic = value;
-        break;
-    }
-  }
-
 }

@@ -12,13 +12,7 @@ class BaseLevel extends Phaser.State {
 
 
   BaseLevel(this.level, this.config){
-    random = new Math.Random();
-    // shuffle the deck
-    DateTime d = new DateTime.now();
-    int s = (d.millisecond / Math.PI).floor();
-    for (int i=0; i<s; i++) {
-      random.nextInt(s-i);
-    }
+    random = new MersenneTwister();
   }
 
   void init([p]) {

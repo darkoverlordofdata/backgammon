@@ -26,8 +26,8 @@ pageAlignHorizontally: true
 pageAlignVertically: true
 forceOrientation: false
 
-splashKey: splash
-splashImg: images/splash.png
+splashKey:
+splashImg:
 
 showPreloadBar: true
 preloadBarKey: loading

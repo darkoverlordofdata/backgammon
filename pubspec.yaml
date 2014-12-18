@@ -3,11 +3,14 @@ version: 0.0.1
 description: Backgammon Client
 dependencies:
   browser: any
+  googleapis: ">=0.1.0 <0.2.0"
+  googleapis_auth: ">=0.2.0 <0.3.0"
   yaml: any
   play_phaser: any
   play_pixi: any
   dartemis: any
   dilithium: any
+  mt19937: any
 
 dev_dependencies:
 #  unittest: any

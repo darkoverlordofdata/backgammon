@@ -16,11 +16,14 @@ class EntityFactory  {
 
   }
 
-  ButtonEntity button(int x, int y, String key, String state)
-    => new ButtonEntity(this, x, y, key, state);
+  ButtonEntity button(int x, int y, String key, String action, [String text = "", String font = "", String fill = ""])
+    => new ButtonEntity(this, x, y, key, action, text, font, fill);
 
-  PipEntity pip(int color, int point, String key)
-    => new PipEntity(this, color, point, key);
+  CheckerEntity checker(int color, int point, String key)
+    => new CheckerEntity(this, color, point, key);
+
+  DiceEntity die(int player, int count, String key)
+    => new DiceEntity(this, player, count, key);
 
   ImageEntity image(int x, int y, String key, [double opacity=1])
     => new ImageEntity(this, x, y, key, opacity);
@@ -47,7 +50,8 @@ class EntityFactory  {
   AbstractEntity invoke(String methodName, List args) {
     switch(methodName) {
       case 'button':      return Function.apply(button, args);
-      case 'pip':        return Function.apply(pip, args);
+      case 'checker':     return Function.apply(checker, args);
+      case 'die':         return Function.apply(die, args);
       case 'image':       return Function.apply(image, args);
       case 'input':       return Function.apply(input, args);
       case 'legend':      return Function.apply(legend, args);

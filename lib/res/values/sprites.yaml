@@ -1,14 +1,14 @@
-pips:
+checkers:
   file: images/checkers.png
   width: 50
   height: 50
 
-pips_active:
+checkers_active:
   file: images/checkers_active.png
   width: 50
   height: 50
 
-pips_topdown:
+checkers_topdown:
   file: images/checkers_topdown.png
   width: 50
   height: 50

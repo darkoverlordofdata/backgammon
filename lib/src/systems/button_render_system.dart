@@ -13,17 +13,28 @@ class ButtonRenderSystem extends Artemis.VoidEntitySystem {
     if (DEBUG) print("ButtonRenderSystem::initialize");
     Artemis.GroupManager groupManager = level.artemis.getManager(new Artemis.GroupManager().runtimeType);
     Artemis.ComponentMapper<Sprite> spriteMapper = new Artemis.ComponentMapper<Sprite>(Sprite, level.artemis);
-    Artemis.ComponentMapper<State> stateMapper = new Artemis.ComponentMapper<State>(State, level.artemis);
+    Artemis.ComponentMapper<Action> actionMapper = new Artemis.ComponentMapper<Action>(Action, level.artemis);
+    Artemis.ComponentMapper<Text> textMapper = new Artemis.ComponentMapper<Text>(Text, level.artemis);
 
     groupManager.getEntities(GROUP_BUTTONS).forEach((entity) {
+
       Sprite sprite = spriteMapper.get(entity);
-      State state = stateMapper.get(entity);
-      level.game.add.button(sprite.x, sprite.y, sprite.key,
-        (source, input, flag) => level.state.start(state.name, true, false, [state.name]));
+      Action action = actionMapper.get(entity);
+      Text text = textMapper.get(entity);
+
+      Phaser.Button button = level.game.add.button(sprite.x, sprite.y, sprite.key,
+        (source, input, flag) => level.context.action.dispatch(action.name));
+
+      if (text.value.length > 0) {
+        Phaser.TextStyle style = new Phaser.TextStyle(font: text.font, fill: text.fill);
+        Phaser.Text label = new Phaser.Text(level.game, 0, 0, text.value, style);
+        button.addChild(label);
+        label.setText(text.value);
+        label.x = ((button.width - label.width)/2).floor();
+        label.y = ((button.height - label.height)/2).floor();
+      }
     });
   }
 
-  void processSystem() {
-    if (DEBUG) print("ButtonRenderSystem::processSystem");
-  }
+  void processSystem() {}
 }

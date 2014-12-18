@@ -21,16 +21,35 @@ part of backgammon;
  * parses/creates a transcript of the match
  *
  */
+                                    //  Turn Status Flags
+const int TURN_MOVE       = 1;      // a valid move
+const int TURN_DOUBLE      = 2;     // player doubles
+const int TURN_TAKE        = 4;     // accepts double
+const int TURN_DROP        = 8;     // declines double
+const int TURN_CANT        = 16;    // can't move
+const int TURN_WTF         = 32;    // can't move?
+const int TURN_WINS        = 64;    // WIN!
 
-
-/**
+/** 
  * RegExp: Parse document structure
  */
 RegExp rxHeader     = new RegExp(r';\s+\[(.*)\s+\"(.*)\"\]');
-RegExp rxPoints     = new RegExp(r'(\d+) point match');
+RegExp rxMatch      = new RegExp(r'(\d+) point match');
 RegExp rxGame       = new RegExp(r'Game (\d+)');
 RegExp rxPlayers    = new RegExp(r'\s*(.*)\s*:\s*(.*)\s\s\s+(.*)\s*:\s*(.*)');
-RegExp rxTwoRolls   = new RegExp(r'(\d+)\)\s*(.*)\s\s\s+(.*)');
+RegExp rxTwoRolls   = new RegExp(r"(\d+)\)\s+([1-6])-?([1-6]):\s+(.*)([1-6])-?([1-6]):\s+(.*)");
+RegExp rxPlayer1    = new RegExp(r"(\d+)\)\s+([1-6])-?([1-6]):\s+(.*)");
+RegExp rxPlayer2    = new RegExp(r"(\d+)\)\s\s\s+([1-6])-?([1-6]):\s+(.*)");
+RegExp rxDbleTake   = new RegExp(r"(\d+)\)\s+(Doubles\s+=>\s+\d+)\s+(Takes)");
+RegExp rxDbleDrop   = new RegExp(r"(\d+)\)\s+(Doubles\s+=>\s+\d+)\s+(Drops)");
+RegExp rxMoveDble   = new RegExp(r"(\d+)\)\s+([1-6])-?([1-6]):\s+(.*)\s+(Doubles\s+=>\s+\d+)");
+RegExp rxTakesMove  = new RegExp(r"(\d+)\)\s+(Takes)\s+([1-6])-?([1-6]):\s+(.*)");
+RegExp rxDropsWins  = new RegExp(r"(\d+)\)\s+(Drops)\s+(Wins\s+\d+)\spoint");
+RegExp rxWins2      = new RegExp(r"\s\s\s\s\s\s\s\s\s\s\s+(Wins\s+\d+\spoint)");
+RegExp rxWins1      = new RegExp(r"\s+(Wins\s+\d+\spoint)");
+RegExp rxCannot1    = new RegExp(r"(\d+)\)\s+([1-6])-?([1-6]):\s+(Cannot\s+Move)(.*)");
+RegExp rxCannot2    = new RegExp(r"(\d+)\)\s+([1-6])-?([1-6]):\s+(\?+)(.*)");
+
 RegExp rxOneRoll    = new RegExp(r'(\d+)\)(.*)');
 RegExp rxComment    = new RegExp(r'\s+(.*)');
 RegExp rxRoll       = new RegExp(r'([1-6])-?([1-6])\s*:\s*(.*)');
@@ -42,9 +61,10 @@ RegExp rxSpaces     = new RegExp(r'\s+');
  */
 RegExp rxDoubles    = new RegExp(r'Doubles\s+=>\s+(\d+)');
 RegExp rxTakes      = new RegExp(r'Takes');
+RegExp rxPasses     = new RegExp(r'Passes');
 RegExp rxNoMove     = new RegExp(r'Cannot\s+Move');
-RegExp rxWtf        = new RegExp(r'\?\?\?\?');
-RegExp rxWins       = new RegExp(r'Wins\s+(\d+)\s+point');
+RegExp rxWtf        = new RegExp(r'\?+');
+RegExp rxPoints     = new RegExp(r'Wins\s+(\d+)\s+point');
 RegExp rxMoves      = new RegExp(r'(([^\s]+)\s+)*');
 
 /**
@@ -62,12 +82,83 @@ RegExp rxMovePOff   = new RegExp(r'(\d+)\/Off');              //  Point/Off
  * Backgammon Move
  */
 class BgmMove {
-  bool hit = false;   // Was it a hit?
+  bool blot = false;  // Was it a hit?
   bool bar = false;   // Move from the bar?
   bool off = false;   // Move off the board?
   int source = 0;     // from point
   int dest = 0;       // to point
   int times = 1;      // repeated # of times
+
+  /**
+   * Parse the raw move data
+   */
+  BgmMove(String move) {
+
+    Match match;
+
+    if (rxMovePPHT.hasMatch(move)) {
+      /**
+       * Point/Point*(times)
+       */
+      match = rxMovePPHT.firstMatch(move);
+      blot = true;
+      source = int.parse(match[1]);
+      dest = int.parse(match[2]);
+      times = int.parse(match[3]);
+
+    } else if (rxMovePPT.hasMatch(move)) {
+      /**
+       * Point/Point(times)
+       */
+      match = rxMovePPT.firstMatch(move);
+      source = int.parse(match[1]);
+      dest = int.parse(match[2]);
+      times = int.parse(match[3]);
+
+    } else if (rxMoveBPH.hasMatch(move)) {
+      /**
+       * Bar/Point
+       */
+      match = rxMoveBPH.firstMatch(move);
+      blot = true;
+      source = 25;
+      dest = int.parse(match[2]);
+
+    } else if (rxMoveBP.hasMatch(move)) {
+      /**
+       * Bar/Point*
+       */
+      match = rxMoveBP.firstMatch(move);
+      source = 25;
+      dest = int.parse(match[2]);
+
+    } else if (rxMovePPH.hasMatch(move)) {
+      /**
+       * Point/Point*
+       */
+      match = rxMovePPH.firstMatch(move);
+      blot = true;
+      source = int.parse(match[1]);
+      dest = int.parse(match[2]);
+
+    } else if (rxMovePP.hasMatch(move)) {
+      /**
+       * Point/Point
+       */
+      match = rxMovePP.firstMatch(move);
+      source = int.parse(match[1]);
+      dest = int.parse(match[2]);
+
+    } else if (rxMovePOff.hasMatch(move)) {
+      /**
+       * Point/Off
+       */
+      match = rxMovePOff.firstMatch(move);
+      source = int.parse(match[1]);
+      dest = 0;
+
+    }
+  }
 
 }
 
@@ -76,18 +167,13 @@ class BgmMove {
  */
 class BgmTurn {
 
-  bool bDoubles = false;
-  bool bTakes = false;
-  bool bCantMove = false;
-  bool bWtf = false;
-  bool bWins = false;
-  bool bMove = false;
-
-  int die1 = 0;
-  int die2 = 0;
-  int double = 0;
-  int points = 0;
-  String move = "";
+  int status = 0;         //  TURN_* Flag
+  int die1 = 0;           //  die 1 value
+  int die2 = 0;           //  die 2 value
+  int stakes = 0;         //  doubling cube value
+  int points = 0;         //  winning point value
+  String move = "";       //  raw move text
+  List<BgmMove> moves;    //  parsed list of moves
 
   /**
    * New Turn
@@ -100,83 +186,52 @@ class BgmTurn {
   BgmTurn(this.die1, this.die2, this.move) {
 
     Match match;
-
+    moves = [];
     if (rxDoubles.hasMatch(move)) {
       /**
        * Player Doubled
        */
       match = rxDoubles.firstMatch(move);
-      double = int.parse(match[1]);
-      bDoubles = true;
+      stakes = int.parse(match[1]);
+      if ([2, 4, 8, 16, 32, 64].indexOf(stakes) == -1) {
+        throw new Exception("Invalid Stakes value [$stakes]");
+      }
+      status = TURN_DOUBLE;
     } else if (rxTakes.hasMatch(move)) {
       /**
-       * Player Takes
+       * Player Takes Double
        */
-      bTakes = true;
+      status = TURN_TAKE;
+    } else if (rxPasses.hasMatch(move)) {
+      /**
+       * Player Passes Double
+       */
+      status = TURN_DROP;
     } else if (rxNoMove.hasMatch(move)) {
       /**
        * Player Can't Move
        */
-      bCantMove = true;
+      status = TURN_CANT;
     } else if (rxWtf.hasMatch(move)) {
       /**
        * ???
        */
-      bWtf = true;
-    } else if (rxWins.hasMatch(move)) {
+      status = TURN_CANT;
+    } else if (rxPoints.hasMatch(move)) {
       /**
        * Player Wins
        */
-      match = rxWins.firstMatch(move);
+      match = rxPoints.firstMatch(move);
       points = int.parse(match[1]);
-      bWins = true;
+      status = TURN_WINS;
     } else if (rxMoves.hasMatch(move)) {
       /**
        * Valid Move
        */
       move = move.replaceAll(rxTrim, "");
-      List<String> moves = move.split(rxSpaces);
-      moves.forEach((move) {
-        if (rxMovePPHT.hasMatch(move)) {
-          //  Point/Point*(times)
-          match = rxMovePPHT.firstMatch(move);
-          print("move ${match[1]} to ${match[2]} and hit x ${match[3]}");
-
-        } else if (rxMovePPT.hasMatch(move)) {
-          //  Point/Point(times)
-          match = rxMovePPT.firstMatch(move);
-          print("move ${match[1]} to ${match[2]} x ${match[3]}");
-
-        } else if (rxMoveBPH.hasMatch(move)) {
-          //  Bar/Point
-          match = rxMoveBPH.firstMatch(move);
-          print("move bar to ${match[2]} and hit");
-
-        } else if (rxMoveBP.hasMatch(move)) {
-          //  Bar/Point*
-          match = rxMoveBP.firstMatch(move);
-          print("move bar to ${match[2]}");
-
-        } else if (rxMovePPH.hasMatch(move)) {
-          //  Point/Point*
-          match = rxMovePPH.firstMatch(move);
-          print("move ${match[1]} to ${match[2]} and hit");
-
-        } else if (rxMovePP.hasMatch(move)) {
-          //  Point/Point
-          match = rxMovePP.firstMatch(move);
-          print("move ${match[1]} to ${match[2]}");
-
-        } else if (rxMovePOff.hasMatch(move)) {
-          //  Point/Off
-          match = rxMovePOff.firstMatch(move);
-          print("move ${match[1]} off");
-
-        } else {
-          print(move);
-        }
-      });
-      bMove = true;
+      move.split(rxSpaces).forEach((move)
+        => moves.add(new BgmMove(move)));
+      status = TURN_MOVE;
     }
 
   }
@@ -273,10 +328,14 @@ class BgmMatch {
     Match roll2;        // Dice roll match
     BgmTurn turn1;      // Turn data
     BgmTurn turn2;      // Turn data
-
+    List<String> patch; // patch for rxTwoRolls
 
     games = [];
-    src = source.split("\n");
+    if (source.indexOf("\r\n") != -1) {
+      src = source.split("\r\n");
+    } else {
+      src = source.split("\n");
+    }
     line = 0;
 
     while (src[line].length > 0) {
@@ -328,15 +387,17 @@ class BgmMatch {
             break;
         }
       } else {
-        throw new Exception("Invalid match header");
+        if (src[line].length > 1) {
+          throw new Exception("Invalid match header");
+        }
       }
       line++;
       if (line >= src.length) break;
     }
 
     line++;
-    if (rxPoints.hasMatch(src[line])) {
-      match = rxPoints.firstMatch(src[line]);
+    if (rxMatch.hasMatch(src[line])) {
+      match = rxMatch.firstMatch(src[line]);
       pointMatch = int.parse(match[1]);
     }
 
@@ -372,54 +433,143 @@ class BgmMatch {
         while (line < src.length && !rxGame.hasMatch(src[line])) {
 
           if (rxTwoRolls.hasMatch(src[line])) {
+
+            /**
+             * Both players rolled and made a move
+             */
             match = rxTwoRolls.firstMatch(src[line]);
-
-            /**
-             * Both players rolled on this turn
-             *
-             * Player 1
-             */
-            if (rxRoll.hasMatch(match[2])) {
-              roll1 = rxRoll.firstMatch(match[2]);
-              turn1 = new BgmTurn(int.parse(roll1[1]), int.parse(roll1[2]), roll1[3]);
-            } else {
-              turn1 = new BgmTurn(0, 0, match[2]);
-            }
-
-            /**
-             * Player 2
-             */
-            if (rxRoll.hasMatch(match[3])) {
-              roll2 = rxRoll.firstMatch(match[3]);
-              turn2 = new BgmTurn(int.parse(roll2[1]), int.parse(roll2[2]), roll2[3]);
-            } else {
-              turn2 = new BgmTurn(0, 0, match[3]);
-            }
+            turn1 = new BgmTurn(int.parse(match[2]), int.parse(match[3]), match[4]);
+            turn2 = new BgmTurn(int.parse(match[5]), int.parse(match[6]), match[7]);
+//            print("A:turn1 ${turn1}");
+//            print("A:turn2 ${turn2}");
             games[game - 1].turns.add([turn1, turn2]);
 
-            
-          } else if (rxOneRoll.hasMatch(src[line])) {
-            match = rxOneRoll.firstMatch(src[line]);
+
+          } else if (rxCannot1.hasMatch(src[line])) {
 
             /**
-             * Player 1 only
+             * Player 1 can't move
              */
-            if (rxRoll.hasMatch(match[2])) {
-              roll1 = rxRoll.firstMatch(match[2]);
-              turn1 = new BgmTurn(int.parse(roll1[1]), int.parse(roll1[2]), roll1[3]);
-            } else {
-              turn1 = new BgmTurn(0, 0, match[2]);
+            match = rxCannot1.firstMatch(src[line]);
+            turn1 = new BgmTurn(int.parse(match[2]), int.parse(match[3]), match[4]);
+            turn2 = new BgmTurn(0, 0, match[5]);
+//            print("K:turn1 ${turn1}");
+//            print("K:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxPlayer2.hasMatch(src[line])) {
+
+            /**
+             * Only the 2nd player rolls & moves
+             */
+            match = rxPlayer2.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, '');
+            turn2 = new BgmTurn(int.parse(match[2]), int.parse(match[3]), match[4]);
+//            print("B:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxPlayer1.hasMatch(src[line])) {
+
+            /**
+             * Only the 1st player roles & moves
+             */
+            match = rxPlayer1.firstMatch(src[line]);
+            turn1 = new BgmTurn(int.parse(match[2]), int.parse(match[3]), match[4]);
+            turn2 = new BgmTurn(0, 0, '');
+//            print("C:turn1 ${turn1}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxDbleTake.hasMatch(src[line])) {
+
+            /**
+             * Player1 Doubles, Player2 Accepts
+             */
+            match = rxDbleTake.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, match[2]);
+            turn2 = new BgmTurn(0, 0, match[3]);
+//            print("D:turn1 ${turn1}");
+//            print("D:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxDbleDrop.hasMatch(src[line])) {
+
+            /**
+             * Player1 Doubles, Player2 Declines
+             */
+            match = rxDbleDrop.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, match[2]);
+            turn2 = new BgmTurn(0, 0, match[3]);
+//            print("E:turn1 ${turn1}");
+//            print("E:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxMoveDble.hasMatch(src[line])) {
+
+            /**
+             * Player1 Moves, Player2 Doubles
+             */
+            match = rxMoveDble.firstMatch(src[line]);
+            turn1 = new BgmTurn(int.parse(match[2]), int.parse(match[3]), match[4]);
+            turn2 = new BgmTurn(0, 0, match[5]);
+//            print("F:turn1 ${turn1}");
+//            print("F:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxTakesMove.hasMatch(src[line])) {
+
+            /**
+             * Player1 Accepts Double, Player2 Moves
+             */
+            match = rxTakesMove.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, match[2]);
+            turn2 = new BgmTurn(int.parse(match[3]), int.parse(match[4]), match[5]);
+//            print("G:turn1 ${turn1}");
+//            print("G:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxDropsWins.hasMatch(src[line])) {
+
+            /**
+             * Player1 Declines Double, Player2 Wins
+             */
+            match = rxDropsWins.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, match[2]);
+            turn2 = new BgmTurn(0, 0, match[3]);
+//            print("H:turn1 ${turn1}");
+//            print("H:turn2 ${turn2}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxWins2.hasMatch(src[line])) {
+
+            /**
+             * Player1 Wins, Player2 Declines
+             */
+            print("I:src ${src[line]}");
+            match = rxWins2.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, '');
+            turn2 = new BgmTurn(0, 0, match[1]);
+//            print("I:turn1 ${turn1}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else if (rxWins1.hasMatch(src[line])) {
+
+            /**
+             * Player1 Wins, Player2 Declines
+             */
+//            print("J:src ${src[line]}");
+            match = rxWins1.firstMatch(src[line]);
+            turn1 = new BgmTurn(0, 0, match[1]);
+            turn2 = new BgmTurn(0, 0, '');
+//            print("J:turn1 ${turn1}");
+            games[game - 1].turns.add([turn1, turn2]);
+
+          } else {
+
+            if (src[line].length != 0) {
+//              print("NO MATCH");
+//              print(src[line].length);
             }
-            games[game - 1].turns.add([turn1, null]);
 
-            
-          } else if (rxComment.hasMatch(src[line])) {
-            match = rxComment.firstMatch(src[line]);
-
-            /**
-             * Just a comment - Win | Doubles | Takes
-             */
-            games[game - 1].comment = match[1];
           }
           line++;
         }

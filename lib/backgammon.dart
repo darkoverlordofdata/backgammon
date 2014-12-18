@@ -41,6 +41,7 @@ import 'package:dartemis/dartemis.dart' as Artemis;
 import 'package:play_phaser/phaser.dart' as Phaser;
 import 'package:play_phaser/arcade.dart' as Arcade;
 import "package:dilithium/dilithium.dart";
+import "package:mt19937/mt19937.dart";
 
 part 'src/backgammon_application.dart';
 part 'src/game.dart';
@@ -66,6 +67,7 @@ part 'src/components/gravity.dart';
 part 'src/components/immovable.dart';
 part 'src/components/number.dart';
 part 'src/components/opacity.dart';
+part 'src/components/player.dart';
 part 'src/components/position.dart';
 part 'src/components/scale.dart';
 part 'src/components/state.dart';
@@ -76,10 +78,11 @@ part 'src/components/velocity.dart';
  * Entities
  */
 part 'src/entities/button_entity.dart';
+part 'src/entities/checker_entity.dart';
+part 'src/entities/dice_entity.dart';
 part 'src/entities/image_entity.dart';
 part 'src/entities/input_entity.dart';
 part 'src/entities/legend_entity.dart';
-part 'src/entities/pip_entity.dart';
 part 'src/entities/player_entity.dart';
 part 'src/entities/score_entity.dart';
 part 'src/entities/string_entity.dart';
@@ -88,8 +91,8 @@ part 'src/entities/string_entity.dart';
  */
 part 'src/systems/arcade_physics_system.dart';
 part 'src/systems/button_render_system.dart';
+part 'src/systems/checker_render_system.dart';
 part 'src/systems/legend_render_system.dart';
-part 'src/systems/pips_render_system.dart';
 part 'src/systems/player_control_system.dart';
 part 'src/systems/score_render_system.dart';
 part 'src/systems/sprite_render_system.dart';
