@@ -32,13 +32,14 @@ class Game extends Dilithium {
       "yellow"
   ];
 
-  BackgammonApplication app;
   Li2Template template;
 
   num soundfx = VOLUME_OFF;
   bool fullscreen = true;
   bool playmusic = true;
 
+  games.GamesApi api;
+  plus.Person person;
 
   /**
    * == New Game ==
@@ -52,6 +53,15 @@ class Game extends Dilithium {
 
     print("Class Game initialized");
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+  }
+
+  /**
+   * Login callback - set environment and player
+   */
+  login(games.GamesApi api, plus.Person person) {
+    this.api = api;
+    this.person = person;
+    print("Name = ${person.name.givenName}");
   }
 
   /**

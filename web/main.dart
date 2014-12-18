@@ -32,5 +32,5 @@ import "package:backgammon/backgammon.dart" show BackgammonApplication, GameLogi
 
 
 void main() {
-  new GameLogin();
+  new GameLogin("login", "login_button");
 }

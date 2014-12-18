@@ -24,7 +24,7 @@ class BackgammonApplication {
    *   * Using game configuration
    *   * Start a game instance
    */
-  BackgammonApplication() {
+  BackgammonApplication(GameLogin login) {
 
 
     Dilithium.using("packages/backgammon/res")
@@ -32,7 +32,7 @@ class BackgammonApplication {
       config.preferences = translatePreferences(config);
       HttpRequest.getString("packages/backgammon/res/${config.preferences['template']}")
       .then((template) {
-        new Game(config, new Li2Template(template));
+        login.connect(new Game(config, new Li2Template(template)));
       });
     });
   }

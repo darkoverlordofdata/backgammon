@@ -1,3 +1,19 @@
+/**
+ *--------------------------------------------------------------------+
+ * game_login.dart
+ *--------------------------------------------------------------------+
+ * Copyright DarkOverlordOfData (c) 2014
+ *--------------------------------------------------------------------+
+ *
+ * This file is a part of Backgammon
+ *
+ * Backgammon is free software; you can copy, modify, and distribute
+ * it under the terms of the GPLv3 License
+ *
+ *--------------------------------------------------------------------+
+ *
+ * Wrap the login workflow
+ */
 part of backgammon;
 
 class GameLogin {
@@ -8,35 +24,34 @@ class GameLogin {
 
   final scopes = [plus.PlusApi.PlusLoginScope, games.GamesApi.GamesScope];
 
-  ButtonElement loginButton;
   DivElement loginDiv;
-  DivElement welcomeDiv;
+  ButtonElement loginButton;
 
-  GameLogin() {
-    loginButton = querySelector('#login_button');
-    loginDiv = querySelector('#loginDiv');
-    welcomeDiv = querySelector('#welcomeDiv');
-    connect();
-    new BackgammonApplication();
 
+  GameLogin(String login_div_id, String login_button_id) {
+
+    loginButton = querySelector('#$login_button_id');
+    loginDiv = querySelector('#$login_div_id');
+    BackgammonApplication app = new BackgammonApplication(this);
   }
 
-  connect() {
-    authorizedClient(loginButton).then((client) {
+  connect(var game) {
+    authorizedClient().then((client) {
 
+      games.GamesApi api = new games.GamesApi(client);
       plus.PlusApi plusApi = new plus.PlusApi(client);
-      plusApi.people.get('me').then((person) {
-        welcomeDiv.setInnerHtml("Welcome, ${person.displayName}!");
+
+      plusApi.people.get('me').then((plus.Person person) {
+        game.login(api, person);
       });
 
-      games.GamesApi game = new games.GamesApi(client);
-      game.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
-        print(l.name);
-      });
-
+//      api.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
+//
+//        print(l.name);
+//      });
+//
       loginButton.disabled = true;
       loginDiv.style.display = 'none';
-      welcomeDiv.style.display = 'inline';
 
 
     }).catchError((error) {
@@ -54,7 +69,7 @@ class GameLogin {
 
   // Obtain an authenticated HTTP client which can be used for accessing Google
   // APIs.
-  Future authorizedClient(ButtonElement loginButton) {
+  Future authorizedClient() {
     // Initializes the oauth2 browser flow, completes as soon as authentication
     // calls can be made.
     return auth.createImplicitBrowserFlow(identifier, scopes)
@@ -73,7 +88,6 @@ class GameLogin {
         // usually not be blocked).
         // We use the loginButton for this.
         loginDiv.style.display = 'inline';
-        welcomeDiv.style.display = 'none';
         return loginButton.onClick.first.then((_) {
           return flow.clientViaUserConsent(immediate: false);
         });
