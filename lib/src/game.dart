@@ -17,26 +17,7 @@ part of backgammon;
 
 class Game extends Dilithium {
 
-  static const VOLUME_ON  = 0.01;
-  static const VOLUME_OFF = 0;
-  static const GEMSIZE    = 48;     // Gem size constant in pixels
-  static const MARGINTOP  = 2;      // Margin top equal to 2 gems height
-  static final List GEMTYPES = [    // All gem types:
-      "blue",
-      "cyan",
-      "green",
-      "magenta",
-      "orange",
-      "pink",
-      "red",
-      "yellow"
-  ];
-
   Li2Template template;
-
-  num soundfx = VOLUME_OFF;
-  bool fullscreen = true;
-  bool playmusic = true;
 
   games.GamesApi api;
   plus.Person person;
@@ -58,10 +39,15 @@ class Game extends Dilithium {
   /**
    * Login callback - set environment and player
    */
-  login(games.GamesApi api, plus.Person person) {
+  connect(games.GamesApi api, plus.Person person) {
     this.api = api;
     this.person = person;
     print("Name = ${person.name.givenName}");
+    api.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
+      print(l.name);
+    });
+
+
   }
 
   /**

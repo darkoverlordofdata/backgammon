@@ -35,21 +35,16 @@ class GameLogin {
     BackgammonApplication app = new BackgammonApplication(this);
   }
 
-  connect(var game) {
+  connect(Game game) {
     authorizedClient().then((client) {
 
       games.GamesApi api = new games.GamesApi(client);
       plus.PlusApi plusApi = new plus.PlusApi(client);
 
       plusApi.people.get('me').then((plus.Person person) {
-        game.login(api, person);
+        game.connect(api, person);
       });
 
-//      api.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
-//
-//        print(l.name);
-//      });
-//
       loginButton.disabled = true;
       loginDiv.style.display = 'none';
 

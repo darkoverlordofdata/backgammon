@@ -187,6 +187,7 @@ class CheckerRenderSystem extends Artemis.VoidEntitySystem {
     if (!started) return;
     if (paused > 0) {
       paused--;
+      if (paused < 400) level.context.rolling = false;
       return;
     }
 
@@ -217,13 +218,12 @@ class CheckerRenderSystem extends Artemis.VoidEntitySystem {
     BgmTurn turn = match.games[ig].turns[pc][player];
 //    print("player $player => $turn");
 
+    level.context.player = player;
     String s = "Player: ${player+1} Roll: ${turn.die1}/${turn.die2} Move: ${turn.move}";
     desc.text = s.padRight(80);
     desc.updateText();
-    if (turn.die1 | turn.die2 != 0) {
+    level.context.setDie(player, turn.die1, turn.die2);
 
-
-    }
 
 
     /**
@@ -234,6 +234,7 @@ class CheckerRenderSystem extends Artemis.VoidEntitySystem {
       player = 0;
       pc++;
     }
-    paused = 100;
+    level.context.rolling = true;
+    paused = 500;
   }
 }

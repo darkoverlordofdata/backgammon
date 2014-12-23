@@ -12,8 +12,10 @@ class Context {
 
   bool _sfx = false;
   bool _music = false;
+  bool rolling = false;
   int _score = 0;
   int _legend = 0;
+  List<List<int>> _die = [[0,0],[0,0]];
 
   int player = 0;
 
@@ -53,6 +55,11 @@ class Context {
    */
   double get volume => (_sfx) ? VOLUME_ON: VOLUME_OFF;
 
+  int getDie(int p, int d) => _die[p][d];
+  void setDie(int p, int d1, int d2) {
+    _die[p][0] = d1;
+    _die[p][1] = d2;
+  }
   /**
    * Update the score, fire signal
    */

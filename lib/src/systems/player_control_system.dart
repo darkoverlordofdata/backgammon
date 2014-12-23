@@ -5,6 +5,7 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
   BaseLevel level;
   List<List<Phaser.Sprite>> die = [[],[]];
   List<List<Phaser.Sprite>> pip = [[],[]];
+  int rate = 0;
 
   PlayerControlSystem(this.level);
 
@@ -43,20 +44,44 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
 
   void processSystem() {
 
+    rate = (rate+1)%10;
+    if (rate != 0) return;
+
+
     int player = level.context.player;
     int other = (player+1)&1;
 
-    die[player][0].alpha = 1;
-    die[player][1].alpha = 1;
-    pip[player][0].alpha = 1;
-    pip[player][1].alpha = 1;
-//    pip[player][0].frame = level.random.nextInt(6)+1;
-//    pip[player][1].frame = level.random.nextInt(6)+1;
-
+    /**
+     * Hide the other players dice
+     */
     die[other][0].alpha = 0;
     die[other][1].alpha = 0;
     pip[other][0].alpha = 0;
     pip[other][1].alpha = 0;
 
+    if (level.context.getDie(player, 0) == 0) {
+      /**
+       * Hide the players dice
+       */
+      die[player][0].alpha = 0;
+      die[player][1].alpha = 0;
+      pip[player][0].alpha = 0;
+      pip[player][1].alpha = 0;
+    } else {
+      /**
+       * Show the players dice
+       */
+      die[player][0].alpha = 1;
+      die[player][1].alpha = 1;
+      pip[player][0].alpha = 1;
+      pip[player][1].alpha = 1;
+      if (level.context.rolling) {
+        pip[player][0].frame = level.random.nextInt(6)+1;
+        pip[player][1].frame = level.random.nextInt(6)+1;
+      } else {
+        pip[player][0].frame = level.context.getDie(player, 0);
+        pip[player][1].frame = level.context.getDie(player, 1);
+      }
+    }
   }
 }
