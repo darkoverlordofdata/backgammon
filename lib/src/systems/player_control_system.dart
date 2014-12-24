@@ -114,42 +114,44 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
     wait = (wait+1)%REPLAY_DELAY;
 
     if (wait == 1) {
-      document.title = "${context.match.variation} - [${context.title}] ${context.game+1}/${context.match.games.length}";
-      /**
-       * Display this turn
-       */
-      BgmTurn turn = context.match.games[context.game].turns[context.turn][context.player];
-      desc.text = "Player: ${context.player} Roll: ${turn.die1}/${turn.die2} Move: ${turn.move}".padRight(80);
-      desc.updateText();
-      context.isRolling = true;
-      context.setDie(turn.die1, turn.die2);
-      rolling = level.random.nextInt(REPLAY_DELAY*.2)+20;
+      if (context.turn < context.match.games[context.game].turns.length) {
 
-      /**
-       * Hide the other players dice
-       */
-      die[other][0].alpha = 0;
-      die[other][1].alpha = 0;
-      pip[other][0].alpha = 0;
-      pip[other][1].alpha = 0;
-      if (context.getDie(0) == 0) {
+        document.title = "${context.match.variation} - [${context.title}] ${context.game + 1}/${context.match.games.length}";
         /**
-         * Hide the players dice
+         * Display this turn
          */
-        die[player][0].alpha = 0;
-        die[player][1].alpha = 0;
-        pip[player][0].alpha = 0;
-        pip[player][1].alpha = 0;
-      } else {
+        BgmTurn turn = context.match.games[context.game].turns[context.turn][context.player];
+        desc.text = "Player: ${context.player} Roll: ${turn.die1}/${turn.die2} Move: ${turn.move}".padRight(80);
+        desc.updateText();
+        context.isRolling = true;
+        context.setDie(turn.die1, turn.die2);
+        rolling = level.random.nextInt(REPLAY_DELAY * .2) + 20;
+
         /**
-         * Show the players dice
+         * Hide the other players dice
          */
-        die[player][0].alpha = 1;
-        die[player][1].alpha = 1;
-        pip[player][0].alpha = 1;
-        pip[player][1].alpha = 1;
+        die[other][0].alpha = 0;
+        die[other][1].alpha = 0;
+        pip[other][0].alpha = 0;
+        pip[other][1].alpha = 0;
+        if (context.getDie(0) == 0) {
+          /**
+           * Hide the players dice
+           */
+          die[player][0].alpha = 0;
+          die[player][1].alpha = 0;
+          pip[player][0].alpha = 0;
+          pip[player][1].alpha = 0;
+        } else {
+          /**
+           * Show the players dice
+           */
+          die[player][0].alpha = 1;
+          die[player][1].alpha = 1;
+          pip[player][0].alpha = 1;
+          pip[player][1].alpha = 1;
+        }
       }
-
     }
 
     if (wait < rolling) {
