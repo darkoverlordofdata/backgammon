@@ -12,53 +12,62 @@ class Context {
 
   bool _sfx = false;
   bool _music = false;
-  bool rolling = false;
   int _score = 0;
   int _legend = 0;
   List<List<int>> _die = [[0,0],[0,0]];
-
+  Phaser.Signal _scored = null;
+  Phaser.Signal _pegged = null;
+  Phaser.Signal _action = null;
+  Phaser.TextStyle _normal = null;
+  BaseLevel _level;
+  BgmMatch _match;
+  int game = 0;
+  int turn = 0;
   int player = 0;
-
-  BaseLevel level;
-  Phaser.Signal scored = null;
-  Phaser.Signal pegged = null;
-  Phaser.Signal action = null;
+  bool isRolling = false;
+  bool isRunning = false;
+  String title = '';
 
   /**
    * Initialize persisted options
    */
-  Context(this.level) {
-    //_score = level._score;
-    scored = new Phaser.Signal();
-    pegged = new Phaser.Signal();
-    action = new Phaser.Signal();
-    _sfx = (window.localStorage["${PFX}_sfx"] == "true");
-    _music = (window.localStorage["${PFX}_music"] == "true");
-    level.game.sound.volume = this.volume;
+  Context(this._level) {
+    _level.game.sound.volume = this.volume;
+
+    _scored = new Phaser.Signal();
+    _pegged = new Phaser.Signal();
+    _action = new Phaser.Signal();
+    _normal = new Phaser.TextStyle(font: "12pt Play", fill: "#000");
+    _match  = new BgmMatch();
+    _sfx    = (window.localStorage["${PFX}_sfx"] == "true");
+    _music  = (window.localStorage["${PFX}_music"] == "true");
+  }
+
+  BaseLevel get level => _level;
+  Phaser.Signal get scored => _scored;
+  Phaser.Signal get pegged => _pegged;
+  Phaser.Signal get action => _action;
+  Phaser.TextStyle get normal => _normal;
+  BgmMatch get match => _match;
+  bool get sfx => _sfx;
+  bool get music => _music;
+  double get volume => (_sfx) ? VOLUME_ON: VOLUME_OFF;
+  int get score => _score;
+  int get legend => _legend;
+
+  set legend(int value) {
+    _legend = value;
+    pegged.dispatch(_legend);
 
   }
 
   /**
-   * Game Score
+   * dice
    */
-  int get score => _score;
-  /**
-   * SoundFX?
-   */
-  bool get sfx => _sfx;
-  /**
-   * Music?
-   */
-  bool get music => _music;
-  /**
-   * Volume level
-   */
-  double get volume => (_sfx) ? VOLUME_ON: VOLUME_OFF;
-
-  int getDie(int p, int d) => _die[p][d];
-  void setDie(int p, int d1, int d2) {
-    _die[p][0] = d1;
-    _die[p][1] = d2;
+  int getDie(int die) => _die[player][die];
+  void setDie(int die1, int die2) {
+    _die[player][0] = die1;
+    _die[player][1] = die2;
   }
   /**
    * Update the score, fire signal
@@ -68,16 +77,6 @@ class Context {
     scored.dispatch(points);
   }
 
-  /**
-   * Legend Level
-   */
-  int get legend => _legend;
-
-  set legend(int value) {
-    _legend = value;
-    pegged.dispatch(_legend);
-
-  }
 
   /**
    * Get game preference
