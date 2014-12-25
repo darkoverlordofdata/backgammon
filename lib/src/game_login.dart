@@ -44,9 +44,10 @@ class GameLogin {
       plusApi.people.get('me').then((plus.Person person) {
         game.connect(api, person);
       });
-
-      loginButton.disabled = true;
-      loginDiv.style.display = 'none';
+//
+//      //loginButton.disabled = true;
+//      loginDiv.style.display = 'none';
+      loginButton.hidden = true;
 
 
     }).catchError((error) {
@@ -59,7 +60,6 @@ class GameLogin {
         return new Future.error(error);
       }
     });
-
   }
 
   // Obtain an authenticated HTTP client which can be used for accessing Google

@@ -14,13 +14,13 @@
 # Backgammon Dilithium(Li2) Level Configuration
 #
 #
-
 #
 # Main menu
 #
 main:
   entities:
     - image: [0, 0, board]
+    - button: [452, 560, 'button_small', 'start', 'Start', "10pt Play", "#000"]
     - die: [0, 0, 'dice']
     - die: [0, 1, 'dice']
     - die: [1, 0, 'dice']
@@ -55,12 +55,11 @@ main:
     - checker: [1, 6, 'checkers']
     - checker: [1, 6, 'checkers']
     - checker: [1, 6, 'checkers']
-    - button: [452, 560, 'button_small', 'start', 'Start', "10pt Play", "#000"]
 
 
   systems:
     - spriteRender: false
-    - checkerRender: true
-    - buttonRender: false
+    - checkerRender: false
     - playerControl: true
+    - buttonRender: false
 

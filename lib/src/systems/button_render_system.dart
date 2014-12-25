@@ -1,6 +1,5 @@
 part of backgammon;
 
-//EntityProcessingSystem
 
 class ButtonRenderSystem extends Artemis.VoidEntitySystem {
 
@@ -22,8 +21,9 @@ class ButtonRenderSystem extends Artemis.VoidEntitySystem {
       Action action = actionMapper.get(entity);
       Text text = textMapper.get(entity);
 
-      Phaser.Button button = level.game.add.button(sprite.x, sprite.y, sprite.key,
+      Phaser.Button button = level.add.button(sprite.x, sprite.y, sprite.key,
         (source, input, flag) => level.context.action.dispatch(action.name));
+
 
       if (text.value.length > 0) {
         Phaser.TextStyle style = new Phaser.TextStyle(font: text.font, fill: text.fill);
@@ -35,6 +35,5 @@ class ButtonRenderSystem extends Artemis.VoidEntitySystem {
       }
     });
   }
-
   void processSystem() {}
 }

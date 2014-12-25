@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Backgammon</title>
   	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>Backgammon</title>
+    <link rel="shortcut icon" href="assets/mgammon.png" />
     <style>
       .gplus {
         height: 32px;
@@ -51,7 +52,8 @@
 
       #logo {
         text-align: center;
-        font-family: Walter Turncoat;
+        /*font-family: Walter Turncoat;*/
+        font-family: Play;
         height: 100%;
         background: -webkit-linear-gradient(315deg, #111, #333);
         background: linear-gradient(135deg, #111, #333);
@@ -148,30 +150,24 @@
   </head>
  
   <body>
-  <div id="logo">
-    <div>
-      <span class='letter'>B</span>
-      <span class='letter'>a</span>
-      <span class='letter'>c</span>
-      <span class='letter'>k</span>
-      <span class='letter'>g</span>
-      <br>
-      <span class='letter'>a</span>
-      <span class='letter'>m</span>
-      <span class='letter'>m</span>
-      <span class='letter'>o</span>
-      <span class='letter'>n</span>
-      <br>
-      <p class="copy">&copy; 2014 Dark Overlord Of Data</p>
-      <br>
-      <p class="build">build: 0</p>
+    <div id="logo">
+      <div>
+        <span class='letter'>g</span>
+        <span class='letter'>a</span>
+        <span class='letter'>m</span>
+        <span class='letter'>m</span>
+        <span class='letter'>o</span>
+        <span class='letter'>n</span>
+        <br>
+        <p class="copy">&copy; 2014 Dark Overlord Of Data</p>
+        <br>
+        <p class="build">build: 0</p>
+      </div>
     </div>
-  </div>
-
+    <div id="backgammon"></div>
     <div id="login">
       <button id="login_button" class="gplus"></button>
     </div>
-
     <script type="application/dart" src="main.dart"></script>
     <script src="packages/browser/dart.js"></script>
   </body>

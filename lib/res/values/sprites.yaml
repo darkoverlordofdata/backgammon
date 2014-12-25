@@ -22,3 +22,8 @@ buttons:
   file: images/buttons.png
   width: 101
   height: 111
+
+button_small:
+  file: images/button_small.png
+  width: 101
+  height: 49

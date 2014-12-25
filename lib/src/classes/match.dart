@@ -21,14 +21,14 @@ part of backgammon;
  * parses/creates a transcript of the match
  *
  */
-                                    //  Turn Status Flags
-const int TURN_MOVE       = 1;      // a valid move
-const int TURN_DOUBLE      = 2;     // player doubles
-const int TURN_TAKE        = 4;     // accepts double
-const int TURN_DROP        = 8;     // declines double
-const int TURN_CANT        = 16;    // can't move
-const int TURN_WTF         = 32;    // can't move?
-const int TURN_WINS        = 64;    // WIN!
+                                      //  Turn Status Flags
+const int TURN_MOVE         = 1;      // a valid move
+const int TURN_DOUBLE       = 2;      // player doubles
+const int TURN_TAKE         = 4;      // accepts double
+const int TURN_DROP         = 8;      // declines double
+const int TURN_CANT         = 16;     // can't move
+const int TURN_WTF          = 32;     // can't move?
+const int TURN_WINS         = 64;     // WIN!
 
 /** 
  * RegExp: Parse document structure

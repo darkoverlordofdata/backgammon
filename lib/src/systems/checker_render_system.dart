@@ -4,7 +4,11 @@ const int TEXT_TOP = 15;
 const int TEXT_BOTTOM = 570;
 const int TOP = 39;
 const int BOTTOM = 513;
+const int CENTER = 275;
 const int PIP_SIZE = 42;
+const int POINT_OFF = 0;
+const int POINT_BAR = 25;
+const int COL0 = 397;
 const int COL1 = 727;
 const int COL2 = 672;
 const int COL3 = 617;
@@ -29,6 +33,7 @@ const int COL21 = 562;
 const int COL22 = 617;
 const int COL23 = 672;
 const int COL24 = 727;
+const int COL25 = 0;
 
 
 class CheckerRenderSystem extends Artemis.VoidEntitySystem {
@@ -36,68 +41,6 @@ class CheckerRenderSystem extends Artemis.VoidEntitySystem {
   BaseLevel level;
   Context context;
 
-
-  List points = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], // White
-                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]; // Red
-
-
-  List pos = [[
-  /**
-   *  White
-   */
-      new Point(COL24, BOTTOM),
-      new Point(COL23, BOTTOM),
-      new Point(COL22, BOTTOM),
-      new Point(COL21, BOTTOM),
-      new Point(COL20, BOTTOM),
-      new Point(COL19, BOTTOM),
-      new Point(COL18, BOTTOM),
-      new Point(COL17, BOTTOM),
-      new Point(COL16, BOTTOM),
-      new Point(COL15, BOTTOM),
-      new Point(COL14, BOTTOM),
-      new Point(COL13, BOTTOM),
-      new Point(COL12, TOP),
-      new Point(COL11, TOP),
-      new Point(COL10, TOP),
-      new Point(COL9, TOP),
-      new Point(COL8, TOP),
-      new Point(COL7, TOP),
-      new Point(COL6, TOP),
-      new Point(COL5, TOP),
-      new Point(COL4, TOP),
-      new Point(COL3, TOP),
-      new Point(COL2, TOP),
-      new Point(COL1, TOP)
-  ],[
-  /**
-   *  Red
-   */
-      new Point(COL1, TOP),
-      new Point(COL2, TOP),
-      new Point(COL3, TOP),
-      new Point(COL4, TOP),
-      new Point(COL5, TOP),
-      new Point(COL6, TOP),
-      new Point(COL7, TOP),
-      new Point(COL8, TOP),
-      new Point(COL9, TOP),
-      new Point(COL10, TOP),
-      new Point(COL11, TOP),
-      new Point(COL12, TOP),
-      new Point(COL13, BOTTOM),
-      new Point(COL14, BOTTOM),
-      new Point(COL15, BOTTOM),
-      new Point(COL16, BOTTOM),
-      new Point(COL17, BOTTOM),
-      new Point(COL18, BOTTOM),
-      new Point(COL19, BOTTOM),
-      new Point(COL20, BOTTOM),
-      new Point(COL21, BOTTOM),
-      new Point(COL22, BOTTOM),
-      new Point(COL23, BOTTOM),
-      new Point(COL24, BOTTOM)
-  ]];
 
   CheckerRenderSystem(this.level);
 
@@ -115,30 +58,28 @@ class CheckerRenderSystem extends Artemis.VoidEntitySystem {
     Artemis.ComponentMapper<Sprite> spriteMapper = new Artemis.ComponentMapper<Sprite>(Sprite, level.artemis);
     Artemis.ComponentMapper<Number> numberMapper = new Artemis.ComponentMapper<Number>(Number, level.artemis);
 
-    Phaser.Group pips = level.game.add.group();
+    List<Phaser.Group> pips = [level.game.add.group(), level.game.add.group()];
 
     groupManager.getEntities(GROUP_CHECKERS).forEach((entity) {
 
       Sprite sprite = spriteMapper.get(entity);
       Number number = numberMapper.get(entity);
 
-      int color = sprite.frame & 1; //  white | red
-      int point = number.value - 1; //  0..23
+      int player = sprite.frame & 1; //  white | red
+      int point = number.value; //  1..24
 
-      sprite.x = pos[color][point].x;
-      switch(pos[color][point].y) {
+      sprite.x = context.pos[player][point].x;
+      switch(context.pos[player][point].y) {
 
         case TOP:
-          sprite.y = pos[color][point].y + (points[color][point]*PIP_SIZE);
+          sprite.y = context.pos[player][point].y + (context.board[player][point].length*PIP_SIZE);
           break;
 
         case BOTTOM:
-          sprite.y = pos[color][point].y - (points[color][point]*PIP_SIZE);
+          sprite.y = context.pos[player][point].y - (context.board[player][point].length*PIP_SIZE);
           break;
       }
-      points[color][point]++;
-
-      pips.create(sprite.x, sprite.y, sprite.key, sprite.frame);
+      context.board[player][point].add(pips[player].create(sprite.x, sprite.y, sprite.key, sprite.frame));
 
     });
 
@@ -147,7 +88,5 @@ class CheckerRenderSystem extends Artemis.VoidEntitySystem {
   /**
    * update the board
    */
-  void processSystem() {
-    if (!context.isRunning) return;
-  }
+  void processSystem() {}
 }

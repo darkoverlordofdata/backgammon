@@ -33,7 +33,10 @@ class Game extends Dilithium {
   Game(Li2Config config, this.template): super(config) {
 
     print("Class Game initialized");
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+//    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+//    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+//    game.scale.setScreenSize(true);
+
   }
 
   /**
@@ -44,7 +47,7 @@ class Game extends Dilithium {
     this.person = person;
     print("Name = ${person.name.givenName}");
     api.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
-      print(l.name);
+      print("Leaderboard ${l.name}");
     });
 
 

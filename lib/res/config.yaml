@@ -16,6 +16,7 @@
 #
 name: Backgammon
 locale: false
+id: backgammon
 menu: main
 
 minWidth: 840

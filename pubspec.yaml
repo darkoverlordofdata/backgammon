@@ -9,8 +9,9 @@ dependencies:
   play_phaser: any
   play_pixi: any
   dartemis: any
-  dilithium: any
   mt19937: any
+  dilithium: any
+
 
 dev_dependencies:
 #  unittest: any

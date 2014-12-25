@@ -11,6 +11,7 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
   int rate = 0;
   int wait = 0;
   int rolling = 0;
+  int domove = 400;
   Phaser.Text desc;
 
   /**
@@ -66,7 +67,8 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
 
     });
     desc = level.game.add.text(0, 0, "", context.normal);
-    String file = files[level.random.nextInt(4)];
+//    String file = files[level.random.nextInt(4)];
+    String file = files[3];
     context.title = file
     .replaceAll(new RegExp(r"\.txt$"), "")
     .replaceAll(new RegExp(r"_\d+$"), "")
@@ -99,7 +101,15 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
       context.isRunning = true;
     });
 
+    level.context.action.add(actionClick);
 
+
+
+  }
+
+  actionClick(String name) {
+
+    print("Clicked $name");
 
   }
 
@@ -111,6 +121,8 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
 
     int player = context.player;
     int other = (player+1)&1;
+    Phaser.Sprite checker;
+
     wait = (wait+1)%REPLAY_DELAY;
 
     if (wait == 1) {
@@ -162,11 +174,47 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
       pip[player][1].frame = level.random.nextInt(6)+1;
     } else if (wait == rolling) {
       /**
-       * Done!
+       * Now think...
        */
       context.isRolling = false;
       pip[player][0].frame = context.getDie(0);
       pip[player][1].frame = context.getDie(1);
+    } else if (wait == domove) {
+      /**
+       * Play the move
+       */
+      BgmTurn turn = context.match.games[context.game].turns[context.turn][context.player];
+      if (turn != null) {
+
+        turn.moves.forEach((BgmMove move) {
+          window.console.log(move);
+          if (move.blot) {
+            /**
+             * We hit the other player!
+             */
+            checker = context.board[other][25-move.dest].removeLast();
+            context.board[other][POINT_BAR].add(checker);
+            checker.alpha = 0;
+          }
+
+          checker = context.board[player][move.source].removeLast();
+          checker.x = context.pos[player][move.dest].x;
+          switch(context.pos[player][move.dest].y) {
+
+            case TOP:
+              checker.y = context.pos[player][move.dest].y + (context.board[player][move.dest].length*PIP_SIZE);
+              break;
+
+            case BOTTOM:
+              checker.y = context.pos[player][move.dest].y - (context.board[player][move.dest].length*PIP_SIZE);
+              break;
+          }
+
+          context.board[player][move.dest].add(checker);
+
+
+        });
+      }
     }
 
     if (wait == 0) {
