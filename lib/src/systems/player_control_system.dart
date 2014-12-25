@@ -18,10 +18,10 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
    * pre-recorded matches
    */
   List<String> files = [
-      "Hayashi-TJ_5_point_match_2014-11-03_1414994215.txt",
-      "kitaji-TJ_5_point_match_2014-11-03_1414994046.txt",
-      "michy-Henrik_11_point_match_2014-11-02_1415106962.txt",
-      "Robin_Swaffield-Michael_Dyett_17_point_match_10-15-2014_1413453261_1413735530.txt"
+      "Hayashi-TJ_5_point_match_2014-11-03.txt",
+      "kitaji-TJ_5_point_match_2014-11-03.txt",
+      "michy-Henrik_11_point_match_2014-11-02.txt",
+      "Robin_Swaffield-Michael_Dyett_17_point_match_10-15-2014.txt"
   ];
 
 
@@ -69,17 +69,7 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
     desc = level.game.add.text(0, 0, "", context.normal);
 //    String file = files[level.random.nextInt(4)];
     String file = files[3];
-    context.title = file
-    .replaceAll(new RegExp(r"\.txt$"), "")
-    .replaceAll(new RegExp(r"_\d+$"), "")
-    .replaceAll(new RegExp(r"_\d+$"), "")
-    .replaceAll("_", " ")
-    .trim();
-
-    wait = 0;
-    context.game = 0;
-    context.turn = 0;
-    context.player = 0;
+    context.title = file.replaceAll(new RegExp(r"\.txt$"), "").replaceAll("_", " ");
 
     HttpRequest.getString("packages/backgammon/res/matches/$file")
     .then((String data) {
@@ -94,23 +84,36 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
         ..text(COL24, TEXT_TOP, context.match.player1, context.normal)
         ..text(COL24, TEXT_BOTTOM, context.match.player2, context.normal);
 
-      wait = 0;
-      context.game = 0;
-      context.turn = 0;
-      context.player = (context.match.games[0].turns[0][0].die1 != 0) ? 0 : 1;
-      context.isRunning = true;
     });
 
-    level.context.action.add(actionClick);
-
-
-
+    level.context.action.add(onClick);
   }
 
-  actionClick(String name) {
+  /**
+   * Button onclick event
+   */
+  onClick(String name) {
+    switch(name) {
 
-    print("Clicked $name");
+    /**
+     * Start new game
+     */
+      case 'start':
+        wait = 0;
+        context.game = 0;
+        context.turn = 0;
+        context.player = (context.match.games[context.game].turns[0][0].die1 != 0) ? 0 : 1;
+        context.isRunning = true;
+        break;
 
+    /**
+     * Next move
+     */
+      case 'next':
+        wait = 0;
+        context.isRunning = true;
+        break;
+    }
   }
 
   /**
@@ -219,6 +222,7 @@ class PlayerControlSystem extends Artemis.VoidEntitySystem {
 
     if (wait == 0) {
 
+      context.isRunning = false;
       /**
        * Next Game?
        */

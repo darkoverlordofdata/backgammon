@@ -21,6 +21,7 @@ main:
   entities:
     - image: [0, 0, board]
     - button: [452, 560, 'button_small', 'start', 'Start', "10pt Play", "#000"]
+    - button: [553, 560, 'button_small', 'next', 'Next', "10pt Play", "#000"]
     - die: [0, 0, 'dice']
     - die: [0, 1, 'dice']
     - die: [1, 0, 'dice']

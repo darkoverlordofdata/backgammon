@@ -30,37 +30,39 @@ along with Backgammon.  If not, see <http://www.gnu.org/licenses/>.
 
 library backgammon;
 
-
-
-import 'dart:async';
 import 'dart:html';
-import 'dart:js';
-import 'dart:async' as async;
+import 'dart:async';
 import 'dart:math' as Math;
-import 'package:play_pixi/pixi.dart' as PIXI;
+
 import 'package:dartemis/dartemis.dart' as Artemis;
 import 'package:play_phaser/phaser.dart' as Phaser;
 import 'package:play_phaser/arcade.dart' as Arcade;
 import "package:dilithium/dilithium.dart" as Li2;
 import "package:mt19937/mt19937.dart";
-import 'package:googleapis_auth/auth_browser.dart' as auth;
-import 'package:googleapis/plus/v1.dart' as plus;
-import 'package:googleapis/games/v1.dart' as games;
+import 'package:googleapis_auth/auth_browser.dart' as Auth;
+import 'package:googleapis/plus/v1.dart' as Plus;
+import 'package:googleapis/games/v1.dart' as Games;
 
 
 part 'src/backgammon_application.dart';
 part 'src/game.dart';
 part 'src/game_login.dart';
-part 'src/classes/match.dart';
-
 /**
- * Artemis:
+ * Model
  */
-part 'src/orion/abstract_entity.dart';
-part 'src/orion/base_level.dart';
-part 'src/orion/context.dart';
-part 'src/orion/entity_factory.dart';
-part 'src/orion/system_factory.dart';
+part 'src/model/bgm_const.dart';
+part 'src/model/bgm_game.dart';
+part 'src/model/bgm_match.dart';
+part 'src/model/bgm_move.dart';
+part 'src/model/bgm_turn.dart';
+/**
+ * Engine
+ */
+part 'src/engine/abstract_entity.dart';
+part 'src/engine/base_level.dart';
+part 'src/engine/context.dart';
+part 'src/engine/entity_factory.dart';
+part 'src/engine/system_factory.dart';
 /**
  * Components
  */

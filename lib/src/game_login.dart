@@ -18,11 +18,11 @@ part of backgammon;
 
 class GameLogin {
 
-  final identifier = new auth.ClientId(
+  final identifier = new Auth.ClientId(
       "260637501952-uva7urq0sm6uqhub7ojd1hu47pk7leam.apps.googleusercontent.com",
       null);
 
-  final scopes = [plus.PlusApi.PlusLoginScope, games.GamesApi.GamesScope];
+  final scopes = [Plus.PlusApi.PlusLoginScope, Games.GamesApi.GamesScope];
 
   DivElement loginDiv;
   ButtonElement loginButton;
@@ -38,21 +38,18 @@ class GameLogin {
   connect(Game game) {
     authorizedClient().then((client) {
 
-      games.GamesApi api = new games.GamesApi(client);
-      plus.PlusApi plusApi = new plus.PlusApi(client);
+      Games.GamesApi api = new Games.GamesApi(client);
+      Plus.PlusApi plusApi = new Plus.PlusApi(client);
 
-      plusApi.people.get('me').then((plus.Person person) {
+      plusApi.people.get('me').then((Plus.Person person) {
         game.connect(api, person);
       });
-//
-//      //loginButton.disabled = true;
-//      loginDiv.style.display = 'none';
       loginButton.hidden = true;
 
 
     }).catchError((error) {
       loginButton.disabled = true;
-      if (error is auth.UserConsentException) {
+      if (error is Auth.UserConsentException) {
         loginButton.text = 'You did not grant access :(';
         return new Future.error(error);
       } else {
@@ -67,8 +64,8 @@ class GameLogin {
   Future authorizedClient() {
     // Initializes the oauth2 browser flow, completes as soon as authentication
     // calls can be made.
-    return auth.createImplicitBrowserFlow(identifier, scopes)
-    .then((auth.BrowserOAuth2Flow flow) {
+    return Auth.createImplicitBrowserFlow(identifier, scopes)
+    .then((Auth.BrowserOAuth2Flow flow) {
       // Try getting credentials without user consent.
       // This will succeed if the user already gave consent for this application.
       return flow.clientViaUserConsent(immediate: true).catchError((_) {
@@ -86,7 +83,7 @@ class GameLogin {
         return loginButton.onClick.first.then((_) {
           return flow.clientViaUserConsent(immediate: false);
         });
-      }, test: (error) => error is auth.UserConsentException);
+      }, test: (error) => error is Auth.UserConsentException);
     });
   }
 

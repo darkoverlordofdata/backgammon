@@ -10,6 +10,8 @@ class Context {
   static const VOLUME_ON  = 0.05;
   static const VOLUME_OFF = 0.00;
 
+  Map button = {};
+
   List pos = [[
       /**
        *  White

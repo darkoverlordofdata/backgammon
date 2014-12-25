@@ -15,12 +15,13 @@
  */
 part of backgammon;
 
+const LEADER1 = 'CgkIgNTS-coHEAIQCA';
+
 class Game extends Li2.Dilithium {
 
   Li2.Template template;
-
-  games.GamesApi api;
-  plus.Person person;
+  Games.GamesApi api;
+  Plus.Person person;
 
   /**
    * == New Game ==
@@ -29,7 +30,6 @@ class Game extends Li2.Dilithium {
    *   * Login to Game Services
    *   * Start the game
    *
-   * returns this
    */
   Game(Li2.Config config, this.template): super(config) {
     print("Class Game initialized");
@@ -38,11 +38,11 @@ class Game extends Li2.Dilithium {
   /**
    * Login callback - set environment and player
    */
-  connect(games.GamesApi api, plus.Person person) {
+  connect(Games.GamesApi api, Plus.Person person) {
     this.api = api;
     this.person = person;
     print("Name = ${person.name.givenName}");
-    api.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
+    api.leaderboards.get(LEADER1).then((Games.Leaderboard l) {
       print("Leaderboard ${l.name}");
     });
   }
