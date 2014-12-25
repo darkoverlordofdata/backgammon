@@ -41,7 +41,7 @@ import 'package:play_pixi/pixi.dart' as PIXI;
 import 'package:dartemis/dartemis.dart' as Artemis;
 import 'package:play_phaser/phaser.dart' as Phaser;
 import 'package:play_phaser/arcade.dart' as Arcade;
-import "package:dilithium/dilithium.dart";
+import "package:dilithium/dilithium.dart" as Li2;
 import "package:mt19937/mt19937.dart";
 import 'package:googleapis_auth/auth_browser.dart' as auth;
 import 'package:googleapis/plus/v1.dart' as plus;

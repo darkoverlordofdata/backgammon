@@ -3,7 +3,7 @@ part of backgammon;
 class BaseLevel extends Phaser.State {
 
   Artemis.World artemis;        // the ecs world
-  Li2Config config;             // dilithium config object
+  Li2.Config config;            // dilithium config object
   Context context;              // the game context
   EntityFactory entityFactory;  // create entities
   SystemFactory systemFactory;  // create systems

@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04f2389e-14cf-4de7-9d8e-fa6fcdcbf6e5" name="Default" comment="daily">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/assets/mgammon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/assets/walterturncoat.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/systems/button_render_system.dart" afterPath="$PROJECT_DIR$/lib/src/systems/button_render_system.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/systems/checker_render_system.dart" afterPath="$PROJECT_DIR$/lib/src/systems/checker_render_system.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/res/config.yaml" afterPath="$PROJECT_DIR$/lib/res/config.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/orion/context.dart" afterPath="$PROJECT_DIR$/lib/src/orion/context.dart" />
+    <list default="true" id="04f2389e-14cf-4de7-9d8e-fa6fcdcbf6e5" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/img/Question_mark.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/img/genericLeaderboard.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/img/gplus_signin_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/achievementManager.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/achievementTable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/achievementWidget.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/admin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/challenge.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/constants.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/friendsTable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/game.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/leaderboardManager.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/leaderboardTable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/leaderboardWidget.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/leaderboardsTable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/login.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/player.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/js/welcome.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/linkPage/480.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/linkPage/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/type-a-number-js/readme.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/backgammon.dart" afterPath="$PROJECT_DIR$/lib/backgammon.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/backgammon_application.dart" afterPath="$PROJECT_DIR$/lib/src/backgammon_application.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/orion/base_level.dart" afterPath="$PROJECT_DIR$/lib/src/orion/base_level.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/game.dart" afterPath="$PROJECT_DIR$/lib/src/game.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/game_login.dart" afterPath="$PROJECT_DIR$/lib/src/game_login.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/res/values/images.yaml" afterPath="$PROJECT_DIR$/lib/res/values/images.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/res/values/levels.yaml" afterPath="$PROJECT_DIR$/lib/res/values/levels.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/classes/match.dart" afterPath="$PROJECT_DIR$/lib/src/classes/match.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/systems/player_control_system.dart" afterPath="$PROJECT_DIR$/lib/src/systems/player_control_system.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/res/values/sprites.yaml" afterPath="$PROJECT_DIR$/lib/res/values/sprites.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="backgammon.iws" />
@@ -43,21 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="game.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/game.dart">
+      <file leaf-file-name="base_level.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/src/orion/base_level.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1116">
-              <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8385269" vertical-offset="28" max-vertical-offset="576">
-              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.8095238" vertical-offset="0" max-vertical-offset="1278">
+              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -91,25 +94,25 @@
         <option value="$PROJECT_DIR$/lib/src/components/player.dart" />
         <option value="$PROJECT_DIR$/lib/src/entities/dice_entity.dart" />
         <option value="$PROJECT_DIR$/lib/src/login.dart" />
-        <option value="$PROJECT_DIR$/lib/backgammon.dart" />
         <option value="$PROJECT_DIR$/web/main.dart" />
         <option value="$PROJECT_DIR$/lib/src/systems/demo_render_system.dart" />
         <option value="$PROJECT_DIR$/lib/src/classes/match.dart" />
         <option value="$PROJECT_DIR$/lib/src/orion/context.dart" />
         <option value="$PROJECT_DIR$/lib/src/systems/checker_render_system.dart" />
         <option value="$PROJECT_DIR$/lib/src/systems/player_control_system.dart" />
-        <option value="$PROJECT_DIR$/lib/src/orion/base_level.dart" />
         <option value="$PROJECT_DIR$/lib/res/values/images.yaml" />
         <option value="$PROJECT_DIR$/lib/res/values/sprites.yaml" />
         <option value="$PROJECT_DIR$/lib/src/orion/entity_factory.dart" />
         <option value="$PROJECT_DIR$/lib/res/values/levels.yaml" />
         <option value="$PROJECT_DIR$/lib/src/game_login.dart" />
         <option value="$PROJECT_DIR$/web/index.html" />
-        <option value="$PROJECT_DIR$/lib/src/backgammon_application.dart" />
         <option value="$PROJECT_DIR$/lib/res/config.yaml" />
         <option value="$PROJECT_DIR$/lib/src/systems/button_render_system.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/backgammon.dart" />
         <option value="$PROJECT_DIR$/lib/src/game.dart" />
+        <option value="$PROJECT_DIR$/lib/src/backgammon_application.dart" />
+        <option value="$PROJECT_DIR$/lib/src/orion/base_level.dart" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
       </list>
     </option>
   </component>
@@ -117,8 +120,7 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="width" value="1368" />
+    <option name="width" value="1366" />
     <option name="height" value="742" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -144,6 +146,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -176,23 +179,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backgammon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backgammon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,20 +308,27 @@
       <option name="project" value="LOCAL" />
       <updated>1419401022707</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="daily">
+      <created>1419479207588</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1419479207588</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="742" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="742" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24907063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24869695" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.49962825" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333332" sideWeight="0.49962825" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.50037175" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -344,7 +339,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -397,6 +391,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/src/game.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/packages/play_phaser/gameobjects/text.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.99642855" vertical-offset="0" max-vertical-offset="20304">
@@ -489,21 +491,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/backgammon.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2827225" vertical-offset="108" max-vertical-offset="1548">
-          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-          <folding>
-            <element signature="e#1707#1746#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packages/dartemis/src/core/component_mapper.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -511,7 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09424084" vertical-offset="0" max-vertical-offset="573">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -522,7 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -538,7 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2513089" vertical-offset="0" max-vertical-offset="2718">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,7 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="268" max-vertical-offset="9846">
           <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -564,30 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.4267857" vertical-offset="1879" max-vertical-offset="3348">
           <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/dilithium/src/li2_button.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43979058" vertical-offset="0" max-vertical-offset="573">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/dilithium/src/li2_state.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/dilithium/src/li2_state.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37172773" vertical-offset="3" max-vertical-offset="576">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -604,7 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.77143" vertical-offset="10474" max-vertical-offset="11034">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,7 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.87958115" vertical-offset="0" max-vertical-offset="612">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,7 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12565444" vertical-offset="0" max-vertical-offset="573">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -657,7 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56020945" vertical-offset="21" max-vertical-offset="1278">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -669,26 +628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/orion/base_level.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.057591625" vertical-offset="705" max-vertical-offset="1278">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/systems/checker_render_system.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9371728" vertical-offset="669" max-vertical-offset="1764">
           <caret line="67" column="52" selection-start-line="67" selection-start-column="52" selection-end-line="67" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15706806" vertical-offset="0" max-vertical-offset="573">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -709,35 +652,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/game_login.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09773124" vertical-offset="484" max-vertical-offset="1494">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/backgammon_application.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2827225" vertical-offset="270" max-vertical-offset="1170">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/res/images/board.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/dilithium/src/li2_boot.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2792321" vertical-offset="1028" max-vertical-offset="2448">
-          <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#3287#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/res/config.yaml">
@@ -756,18 +673,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15652174" vertical-offset="0" max-vertical-offset="575">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/backgammon.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24869566" vertical-offset="1" max-vertical-offset="576">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/dilithium/dilithium.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.18782608" vertical-offset="108" max-vertical-offset="720">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#1636#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/game.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1116">
-          <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
+        <state vertical-scroll-proportion="-0.26782608" vertical-offset="406" max-vertical-offset="1008">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/game_login.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9391304" vertical-offset="0" max-vertical-offset="1494">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8385269" vertical-offset="28" max-vertical-offset="576">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.4908759" vertical-offset="1" max-vertical-offset="576">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/backgammon_application.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1937172" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/orion/base_level.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8095238" vertical-offset="0" max-vertical-offset="1278">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
           <folding />
         </state>
       </provider>

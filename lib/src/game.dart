@@ -15,9 +15,9 @@
  */
 part of backgammon;
 
-class Game extends Dilithium {
+class Game extends Li2.Dilithium {
 
-  Li2Template template;
+  Li2.Template template;
 
   games.GamesApi api;
   plus.Person person;
@@ -26,17 +26,13 @@ class Game extends Dilithium {
    * == New Game ==
    *   * Set the screen dimensions
    *   * Configure the game states
+   *   * Login to Game Services
    *   * Start the game
    *
    * returns this
    */
-  Game(Li2Config config, this.template): super(config) {
-
+  Game(Li2.Config config, this.template): super(config) {
     print("Class Game initialized");
-//    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-//    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-//    game.scale.setScreenSize(true);
-
   }
 
   /**
@@ -49,8 +45,6 @@ class Game extends Dilithium {
     api.leaderboards.get('CgkIgNTS-coHEAIQCA').then((games.Leaderboard l) {
       print("Leaderboard ${l.name}");
     });
-
-
   }
 
   /**
